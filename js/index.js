@@ -131,141 +131,60 @@ if (signBtn) {
 }
 
 // ============== ToDoList App PAGE ==============
-if (welcomeHeader) {
-  var userName = localStorage.getItem("currentUser");
-  var userMail = localStorage.getItem("currentUserMail");
-  if (userName) {
-    welcomeHeader.innerHTML = `Hello ${userName}`;
-    barName.innerHTML = `${userName}`;
-    barMail.innerHTML = `${userMail}`;
-  } else {
-    window.location.href = "./index.html";
-  }
-}
-var currentUser = localStorage.getItem("currentUser");
-// if (!currentUser) {
-//   window.location.href = "./index.html";
-// }
-
-var storageKey = `tasks_${currentUser}`;
-var tasks = JSON.parse(localStorage.getItem(storageKey)) || [];
-// ^display all tasks when reload
-displayTasks();
-
-// *#####functions
-// ~addTask function (C ===> CRUD)
-addTaskBtn.addEventListener("click", function () {
-  const title = taskInput.value.trim();
-  if (!title) return;
-
-  const newTask = {
-    id: Date.now(),
-    title: title,
-    completed: false,
-  };
-  // add the task to local storage
-  tasks.push(newTask);
-
-  saveAndDisplay();
-  //   ~ reset the input
-  taskInput.value = "";
-});
-
-// ~ display Tasks (R (Read/Retrive) ===> CRUD)
-function displayTasks() {
-  // clean the container for new html
-  tasksContainer.innerHTML = "";
-  completedContainer.innerHTML = "";
-
-  tasks.forEach((task) => {
-    const taskEl = document.createElement("div");
-    taskEl.className =
-      "task d-flex justify-content-between align-items-center p-2 mb-2 border rounded";
-    taskEl.dataset.id = task.id;
-
-    taskEl.innerHTML = `
-      <p class="mt-3 flex-grow-1">${task.title}</p>
-      <div class="operations d-flex align-items-center gap-2">
-        <i class="fa-solid fa-trash text-black delete-btn"></i>
-        <i class="fa-solid fa-pen-to-square text-white edit-btn"></i>
-        <div class="check-box p-2 border rounded check-btn ${
-          task.completed ? "bg-success text-white" : ""
-        }">
-          <i class="fa-solid fa-check ${task.completed ? "" : "d-none"}"></i>
-        </div>
-      </div>
-    `;
-
-    // add events on icons and checkbutton
-    const deleteBtn = taskEl.querySelector(".delete-btn");
-    const editBtn = taskEl.querySelector(".edit-btn");
-    const checkBtn = taskEl.querySelector(".check-btn");
-
-    deleteBtn.addEventListener("click", () => deleteTask(task.id));
-    editBtn.addEventListener("click", () => editTask(task.id, task.title));
-    checkBtn.addEventListener("click", () => toggleComplete(task.id));
-
-    // put completed task in copleted container
-    if (task.completed) {
-      completedContainer.appendChild(taskEl);
+window.addEventListener("DOMContentLoaded", function () {
+  if (welcomeHeader) {
+    var userName = localStorage.getItem("currentUser");
+    var userMail = localStorage.getItem("currentUserMail");
+    if (userName) {
+      welcomeHeader.innerHTML = `Hello ${userName}`;
+      barName.innerHTML = `${userName}`;
+      barMail.innerHTML = `${userMail}`;
     } else {
-      tasksContainer.appendChild(taskEl);
+      window.location.href = "./index.html";
     }
-  });
-}
-
-// ~ ============== deleteTask function ==============
-function deleteTask(id) {
-  tasks = tasks.filter((t) => t.id !== id);
-  saveAndDisplay();
-}
-
-// ~ ============== update function ==============
-function editTask(id, oldTitle) {
-  const newTitle = prompt("Edit Task:", oldTitle);
-  if (newTitle === null || newTitle.trim() === "") return;
-
-  const task = tasks.find((t) => t.id === id);
-  if (task) {
-    task.title = newTitle.trim();
-    saveAndDisplay();
   }
-}
+  var currentUser = localStorage.getItem("currentUser");
+  // if (!currentUser) {
+  //   window.location.href = "./index.html";
+  // }
 
-// ~ ============== done or redone the task ==============
-function toggleComplete(id) {
-  const task = tasks.find((t) => t.id === id);
-  if (task) {
-    task.completed = !task.completed;
-    saveAndDisplay();
-  }
-}
-
-// ============== save and display function ==============
-function saveAndDisplay() {
-  localStorage.setItem(storageKey, JSON.stringify(tasks));
+  var storageKey = `tasks_${currentUser}`;
+  var tasks = JSON.parse(localStorage.getItem(storageKey)) || [];
+  // ^display all tasks when reload
   displayTasks();
-}
 
-// ============== search by task name ==============
-const searchInput = document.getElementById("search-tasks");
-if (searchInput) {
-  searchInput.addEventListener("input", function () {
-    const term = this.value.toLowerCase();
-    const filtered = tasks.filter((t) => t.title.toLowerCase().includes(term));
-    displayFilteredTasks(filtered);
+  // *#####functions
+  // ~addTask function (C ===> CRUD)
+  addTaskBtn.addEventListener("click", function () {
+    const title = taskInput.value.trim();
+    if (!title) return;
+
+    const newTask = {
+      id: Date.now(),
+      title: title,
+      completed: false,
+    };
+    // add the task to local storage
+    tasks.push(newTask);
+
+    saveAndDisplay();
+    //   ~ reset the input
+    taskInput.value = "";
   });
-}
 
-function displayFilteredTasks(filteredTasks) {
-  tasksContainer.innerHTML = "";
-  completedContainer.innerHTML = "";
+  // ~ display Tasks (R (Read/Retrive) ===> CRUD)
+  function displayTasks() {
+    // clean the container for new html
+    tasksContainer.innerHTML = "";
+    completedContainer.innerHTML = "";
 
-  filteredTasks.forEach((task) => {
-    const taskEl = document.createElement("div");
-    taskEl.className =
-      "task d-flex justify-content-between align-items-center p-2 mb-2 border rounded";
-    taskEl.innerHTML = `
+    tasks.forEach((task) => {
+      const taskEl = document.createElement("div");
+      taskEl.className =
+        "task d-flex justify-content-between align-items-center p-2 mb-2 border rounded";
+      taskEl.dataset.id = task.id;
+
+      taskEl.innerHTML = `
       <p class="mt-3 flex-grow-1">${task.title}</p>
       <div class="operations d-flex align-items-center gap-2">
         <i class="fa-solid fa-trash text-black delete-btn"></i>
@@ -278,16 +197,102 @@ function displayFilteredTasks(filteredTasks) {
       </div>
     `;
 
-    // add event on completed task container
-    taskEl.querySelector(".delete-btn").onclick = () => deleteTask(task.id);
-    taskEl.querySelector(".edit-btn").onclick = () =>
-      editTask(task.id, task.title);
-    taskEl.querySelector(".check-btn").onclick = () => toggleComplete(task.id);
+      // add events on icons and checkbutton
+      const deleteBtn = taskEl.querySelector(".delete-btn");
+      const editBtn = taskEl.querySelector(".edit-btn");
+      const checkBtn = taskEl.querySelector(".check-btn");
 
-    if (task.completed) {
-      completedContainer.appendChild(taskEl);
-    } else {
-      tasksContainer.appendChild(taskEl);
+      deleteBtn.addEventListener("click", () => deleteTask(task.id));
+      editBtn.addEventListener("click", () => editTask(task.id, task.title));
+      checkBtn.addEventListener("click", () => toggleComplete(task.id));
+
+      // put completed task in copleted container
+      if (task.completed) {
+        completedContainer.appendChild(taskEl);
+      } else {
+        tasksContainer.appendChild(taskEl);
+      }
+    });
+  }
+
+  // ~ ============== deleteTask function ==============
+  function deleteTask(id) {
+    tasks = tasks.filter((t) => t.id !== id);
+    saveAndDisplay();
+  }
+
+  // ~ ============== update function ==============
+  function editTask(id, oldTitle) {
+    const newTitle = prompt("Edit Task:", oldTitle);
+    if (newTitle === null || newTitle.trim() === "") return;
+
+    const task = tasks.find((t) => t.id === id);
+    if (task) {
+      task.title = newTitle.trim();
+      saveAndDisplay();
     }
-  });
-}
+  }
+
+  // ~ ============== done or redone the task ==============
+  function toggleComplete(id) {
+    const task = tasks.find((t) => t.id === id);
+    if (task) {
+      task.completed = !task.completed;
+      saveAndDisplay();
+    }
+  }
+
+  // ============== save and display function ==============
+  function saveAndDisplay() {
+    localStorage.setItem(storageKey, JSON.stringify(tasks));
+    displayTasks();
+  }
+
+  // ============== search by task name ==============
+  const searchInput = document.getElementById("search-tasks");
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      const term = this.value.toLowerCase();
+      const filtered = tasks.filter((t) =>
+        t.title.toLowerCase().includes(term)
+      );
+      displayFilteredTasks(filtered);
+    });
+  }
+
+  function displayFilteredTasks(filteredTasks) {
+    tasksContainer.innerHTML = "";
+    completedContainer.innerHTML = "";
+
+    filteredTasks.forEach((task) => {
+      const taskEl = document.createElement("div");
+      taskEl.className =
+        "task d-flex justify-content-between align-items-center p-2 mb-2 border rounded";
+      taskEl.innerHTML = `
+      <p class="mt-3 flex-grow-1">${task.title}</p>
+      <div class="operations d-flex align-items-center gap-2">
+        <i class="fa-solid fa-trash text-black delete-btn"></i>
+        <i class="fa-solid fa-pen-to-square text-white edit-btn"></i>
+        <div class="check-box p-2 border rounded check-btn ${
+          task.completed ? "bg-success text-white" : ""
+        }">
+          <i class="fa-solid fa-check ${task.completed ? "" : "d-none"}"></i>
+        </div>
+      </div>
+    `;
+
+      // add event on completed task container
+      taskEl.querySelector(".delete-btn").onclick = () => deleteTask(task.id);
+      taskEl.querySelector(".edit-btn").onclick = () =>
+        editTask(task.id, task.title);
+      taskEl.querySelector(".check-btn").onclick = () =>
+        toggleComplete(task.id);
+
+      if (task.completed) {
+        completedContainer.appendChild(taskEl);
+      } else {
+        tasksContainer.appendChild(taskEl);
+      }
+    });
+  }
+});
