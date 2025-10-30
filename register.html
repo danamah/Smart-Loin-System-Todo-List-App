@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Page | To Do List</title>
+    <!-- ^ Fontawsome library -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!-- ^ Bootstrap css library -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- ^ myStyle Sheet -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- ^ favicon -->
+    <link rel="icon" href="./images/sticky-note.png" />
+  </head>
+  <body class="register">
+    <div class="container sign-up my-5 shadow-lg mx-auto">
+      <h1 class="text-center mb-3">
+        Register Now & Have an Account To The ToDoList Site! 📝
+      </h1>
+      <input
+        id="userName"
+        type="text"
+        class="form-control my-2 text-white p-2 mb-3"
+        placeholder="Enter your Name"
+      />
+      <p class="fs-6 my-1 text-danger d-none">
+        *User Name Should Not have any numbers
+      </p>
+      <input
+        id="user-mail"
+        type="text"
+        class="form-control my-2 text-white p-2 mb-3"
+        placeholder="Enter your email"
+      />
+      <p class="fs-6 my-1 text-danger d-none">*Your email is Not valid</p>
+      <input
+        id="user-pass"
+        type="password"
+        class="form-control my-2 text-white p-2 mb-3"
+        placeholder="Enter your password"
+      />
+      <p class="fs-6 my-1 text-danger d-none">*Please enter a Valid Password</p>
+      <a id="signBtn" class="button btn form-control">Sign Up</a>
+      <p class="fs-6 my-1 text-success d-none my-3 text-center fs-3 fw-bold">
+        Your're haveing an email now, you can
+        <a href="./index.html"> sign in</a>
+      </p>
+      <p class="text-center text-white mt-3 pt-3">
+        You have an account?<a href="./index.html"> Sign in</a>
+      </p>
+    </div>
+    <!-- ^ sweetAlert Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- ^ Bootstrap js library -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- ^ my js File -->
+    <script src="./js/index.js"></script>
+  </body>
+</html>

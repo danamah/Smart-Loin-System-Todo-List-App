@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | To Do List</title>
+    <!-- ^ Fontawsome library -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!-- ^ Bootstrap css library -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- ^ myStyle Sheet -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- ^ favicon -->
+    <link rel="icon" href="./images/sticky-note.png" />
+  </head>
+  <body class="welcome">
+    <nav class="navbar navbar-expand-lg shadow">
+      <div class="container">
+        <a id="home" class="navbar-brand fw-bolder" href="#home"
+          >TODO<span>LIST</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="search mx-auto">
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Find Your Task"
+            />
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"
+                ><i class="fa-solid fa-calendar-days"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page"
+                ><i class="fa-regular fa-bell"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bolder fs-5" aria-current="page"
+                ><span>Dash</span>Board</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="home-page">
+      <div class="side-bar shadow p-3 me-3">
+        <div class="image">
+          <img class="w-100" src="./images/avatar-3.jpg" alt="" />
+        </div>
+        <h3 id="bar-user" class="text-center mt-4">user Name</h3>
+        <h4 id="bar-email" class="text-center mb-2">user gmail</h4>
+        <ul class="list-unstyled">
+          <li class="active mb-2">
+            <i class="fa-solid fa-grip"></i> Dashboard
+          </li>
+          <li class="mb-2">
+            <i class="fa-solid fa-exclamation"></i> Vital Task
+          </li>
+          <li class="mb-2"><i class="fa-solid fa-list-check"></i> My Task</li>
+          <li class="mb-2">
+            <i class="fa-solid fa-bars-progress"></i> Task Category
+          </li>
+          <li class="mb-2"><i class="fa-solid fa-gear"></i> Settings</li>
+          <li class="mb-2"><i class="fa-solid fa-circle-question"></i> Help</li>
+        </ul>
+        <li class="log-out">
+          <a class="nav-link active" aria-current="page" href="./index.html"
+            ><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a
+          >
+        </li>
+      </div>
+      <div class="main-page p-3">
+        <h1 class="welcome">Welcome, user name</h1>
+        <div class="body-page">
+          <div class="task-card p-3 shadow">
+            <p><i class="fa-solid fa-business-time"></i> To-Do</p>
+            <header class="d-flex justify-content-between align-items-center">
+              <input
+                id="add-task"
+                type="text"
+                placeholder="Add Your Task"
+                class="form-control"
+              />
+              <button id="add-task-btn" type="button">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </header>
+            <div class="tasks my-2 mt-4 py-2">
+              <div
+                class="task d-flex justify-content-between align-items-center"
+              >
+                <p class="mt-3">Walk the dog</p>
+                <div
+                  class="operations d-flex justify-content-center align-items-center"
+                >
+                  <i class="fa-solid fa-trash p-2"></i>
+                  <i class="fa-solid fa-pen-to-square ms-3 p-1"></i>
+                  <div
+                    class="check-box ms-3 p-2 d-flex justify-content-center align-items-center"
+                  >
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="task-status p-3 shadow">
+            <p><i class="fa-regular fa-chart-bar"></i> Task Status</p>
+            <div class="container">
+              <div class="row text-center">
+                <div class="col-4 comp">
+                  <div class="my-2">
+                    <h3 class="mt-2">85%</h3>
+                  </div>
+                  <p>completed</p>
+                </div>
+                <div class="col-4 prog">
+                  <div class="my-2">
+                    <h3 class="mt-2">46%</h3>
+                  </div>
+                  <p>in progress</p>
+                </div>
+                <div class="col-4 not-start">
+                  <div class="my-2">
+                    <h3 class="mt-2">20%</h3>
+                  </div>
+                  <p>Not Started</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="completed-tasks p-3 shadow">
+            <p><i class="fa-solid fa-clipboard-check"></i> Completed Tasks</p>
+            <div class="comp-task d-flex justify-content-between">
+              <p class="mt-2">Study Some Programming</p>
+              <div class="operations d-flex align-items-center">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ^ sweetAlert Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- ^ Bootstrap js library -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- ^ my js File -->
+    <script src="./js/index.js"></script>
+  </body>
+</html>
