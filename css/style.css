@@ -458,7 +458,7 @@ div.side-bar li.log-out:hover{
 .main-page .body-page .task-status .comp p::after {
     content: "";
     position: absolute;
-    left: 0px;
+    left: -10px;
     top: 50%;
     transform: translateY(-50%);
     background-color: green;
@@ -477,7 +477,7 @@ div.side-bar li.log-out:hover{
 .main-page .body-page .task-status .prog p::after{
      content: "";
     position: absolute;
-    left: 0px;
+    left: -10px;
     top: 50%;
     transform: translateY(-50%);
     background-color: blue;
@@ -494,9 +494,9 @@ div.side-bar li.log-out:hover{
     -o-border-radius: 50%;
 }
 .main-page .body-page .task-status .not-start p::after{
-     content: "";
+    content: "";
     position: absolute;
-    left: 0px;
+    left: -10px;
     top: 50%;
     transform: translateY(-50%);
     background-color: red;
@@ -528,25 +528,25 @@ div.side-bar li.log-out:hover{
     font-size: 22px;
     font-weight: 700px;
 }
-/* .main-page .body-page .completed-tasks p i{
-    color: var(--gray-color);
-    margin-right: 10px;
+@media screen and (max-width:992px) {
+    .main-page .body-page{
+    display: grid;
+    gap: 25px;
+    grid-column: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto 1fr 1fr;
+    grid-template-areas: "todo todo todo todo todo"
+                        "todo todo todo todo todo"
+                        "todo todo todo todo todo"
+                        "status status status status status"
+                        "comp comp comp comp comp"
+    ;
 }
-.main-page .body-page .completed-tasks .comp-task{
-    background-color: rgb(59, 225, 162);
-    padding: 12px;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
 }
-.main-page .body-page .completed-tasks .comp-task p{
-    text-decoration: line-through;
-    color: var(--gray-color);
-    font-size: 16px;
-    font-family: var(--sec-font);
+@media screen and (max-width:600px){
+    div.home-page{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    background-color: var(--home-body-color);
 }
-.main-page .body-page .completed-tasks .comp-task i{
-    color: #c2364d;
-} */
+}
