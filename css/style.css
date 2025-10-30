@@ -528,7 +528,7 @@ div.side-bar li.log-out:hover{
     font-size: 22px;
     font-weight: 700px;
 }
-.main-page .body-page .completed-tasks p i{
+/* .main-page .body-page .completed-tasks p i{
     color: var(--gray-color);
     margin-right: 10px;
 }
@@ -549,4 +549,4 @@ div.side-bar li.log-out:hover{
 }
 .main-page .body-page .completed-tasks .comp-task i{
     color: #c2364d;
-}
+} */
