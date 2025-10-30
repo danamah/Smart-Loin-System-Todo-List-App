@@ -12,8 +12,8 @@
 body.log-in-page,
 body.register
 {
-    background-image: linear-gradient(#3f5efb94,#5a5ae579,#9353bb93,#fc466a82) ,url("../images/ToDoListBg.jpg");
-    /* background-image: linear-gradient(#3f5efb94,#5a5ae579,#9353bb93,#fc466a82) ,url("../images/pencilChecking.jpg"); */
+    /* background-image: linear-gradient(#3f5efb94,#5a5ae579,#9353bb93,#fc466a82) ,url("../images/ToDoListBg.jpg"); */
+    background-image: linear-gradient(#3f5efb94,#5a5ae579,#9353bb93,#fc466a82) ,url("../images/pencilChecking.jpg");
     /* background-position: center top; */
     background-position: center;
     background-repeat: no-repeat;
