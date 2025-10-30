@@ -142,12 +142,10 @@ if (welcomeHeader) {
     window.location.href = "./index.html";
   }
 }
-window.addEventListener("DOMContentLoaded", function () {
-  var currentUser = localStorage.getItem("currentUser");
-  if (!currentUser) {
-    window.location.replace("./index.html");
-  }
-});
+var currentUser = localStorage.getItem("currentUser");
+// if (!currentUser) {
+//   window.location.href = "./index.html";
+// }
 
 var storageKey = `tasks_${currentUser}`;
 var tasks = JSON.parse(localStorage.getItem(storageKey)) || [];
