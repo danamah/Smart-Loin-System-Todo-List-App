@@ -12,17 +12,10 @@ var inputRegex = {
   userMail: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   userPass: /^.{6,}$/,
 };
-console.log(welcomeHeader);
-
 var taskInput = document.getElementById("add-task");
 var addTaskBtn = document.getElementById("add-task-btn");
 var tasksContainer = document.getElementById("tasks-container");
 var completedContainer = document.getElementById("completed-container");
-
-console.log(taskInput);
-console.log(addTaskBtn);
-console.log(tasksContainer);
-console.log(completedContainer);
 // ^ function
 // &#####validation Function
 function isValidInput(regex, userInput) {
@@ -155,25 +148,28 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // *#####functions
   // ~addTask function (C ===> CRUD)
-  addTaskBtn.addEventListener("click", function () {
-    const title = taskInput.value.trim();
-    if (!title) return;
+  if (addTaskBtn && taskInput) {
+    addTaskBtn.addEventListener("click", function () {
+      const title = taskInput.value.trim();
+      if (!title) return;
 
-    const newTask = {
-      id: Date.now(),
-      title: title,
-      completed: false,
-    };
-    // add the task to local storage
-    tasks.push(newTask);
+      const newTask = {
+        id: Date.now(),
+        title: title,
+        completed: false,
+      };
+      // add the task to local storage
+      tasks.push(newTask);
 
-    saveAndDisplay();
-    //   ~ reset the input
-    taskInput.value = "";
-  });
+      saveAndDisplay();
+      //   ~ reset the input
+      taskInput.value = "";
+    });
+  }
 
   // ~ display Tasks (R (Read/Retrive) ===> CRUD)
   function displayTasks() {
+    if (!tasksContainer || !completedContainer) return;
     // clean the container for new html
     tasksContainer.innerHTML = "";
     completedContainer.innerHTML = "";
@@ -214,7 +210,9 @@ window.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
+  if (tasksContainer && completedContainer) {
+    displayTasks();
+  }
   // ~ ============== deleteTask function ==============
   function deleteTask(id) {
     tasks = tasks.filter((t) => t.id !== id);
